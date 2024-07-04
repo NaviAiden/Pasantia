@@ -1,0 +1,73 @@
+<odoo>
+    <data>
+        <!-- Definición de la Vista de Árbol -->
+        <record id="view_property_tree" model="ir.ui.view">
+            <field name="name">property.tree</field>
+            <field name="model">realestate.property</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="rooms"/>
+                    <field name="price"/>
+                    <field name="property_type"/>
+                    <field name="disponibility_date"/>
+                    <!--<field name="last_seen"/>-->
+                    <field name="state"/>
+                    <field name="active"/>
+                    <field name="location" widget="url"/>
+                    <field name="image_main" widget="image" string="Main Image"/>
+                    <field name="compare"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Definición de la Vista de Formulario -->
+        <record id="view_property_form" model="ir.ui.view">
+            <field name="name">property.form</field>
+            <field name="model">realestate.property</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="image_main" widget="image" string="Main Image"/>
+                    </header>
+                    <sheet>
+                        <notebook>
+                            <page string="Details">
+                                <group>
+                                    <field name="name"/>
+                                    <field name="rooms"/>
+                                    <field name="price"/>
+                                    <field name="property_type"/>
+                                    <field name="disponibility_date"/>
+                                    <!--<field name="last_seen"/>-->
+                                    <field name="state"/>
+                                    <field name="active"/>
+                                    <field name="location" widget="url"/>
+                                    <field name="compare"/>
+                                </group>
+                            </page>
+                            <page string="Gallery">
+                                <field name="image_gallery" widget="many2many_binary" options="{'widget': 'image'}"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Definición de la Acción -->
+        <record id="action_property" model="ir.actions.act_window">
+            <field name="name">Properties</field>
+            <field name="res_model">realestate.property</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_property_tree"/>
+        </record>
+        
+        <!-- Definición del Menú -->
+        <menuitem id="menu_realestate_root" name="Real Estate" sequence="1"/>
+        <menuitem id="menu_property" name="Properties" parent="menu_realestate_root" action="action_property" sequence="2"/>
+        <menuitem id="menu_client" name="Client" parent="menu_realestate_root" action="action_client" sequence="3"/>
+        <menuitem id="menu_contract" name="Contract" parent="menu_realestate_root" action="action_contract" sequence="4"/>
+        <menuitem id="menu_compare_properties" name="Compare Properties" parent="menu_realestate_root" action="action_property_compare" sequence="5"/>
+    </data>
+</odoo>

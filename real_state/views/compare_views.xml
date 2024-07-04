@@ -1,0 +1,55 @@
+<odoo>
+    <data>
+        <!-- Acción para ver propiedades comparadas -->
+        <record id="action_property_compare" model="ir.actions.act_window">
+            <field name="name">Compare Properties</field>
+            <field name="res_model">realestate.property</field>
+            <field name="domain">[('compare', '=', True)]</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <!-- Vista de árbol para comparación -->
+        <record id="view_property_compare_tree" model="ir.ui.view">
+            <field name="name">property.compare.tree</field>
+            <field name="model">realestate.property</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="price"/>
+                    <field name="rooms"/>
+                    <field name="property_type"/>
+                    <field name="disponibility_date"/>
+                    <field name="state"/>
+                    <field name="address"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Vista de formulario para comparación -->
+        <record id="view_property_compare_form" model="ir.ui.view">
+            <field name="name">property.compare.form</field>
+            <field name="model">realestate.property</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="price"/>
+                                <field name="rooms"/>
+                                <field name="property_type"/>
+                                <field name="disponibility_date"/>
+                                <field name="state"/>
+                                <field name="address"/>
+                            </group>
+                        </group>
+                        <button name="clear_compare" type="object" string="Clear Compare" class="oe_highlight"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Añadir botón de comparación en el menú -->
+        <!--<menuitem id="menu_compare_properties" name="Compare Properties" parent="menu_realestate_root" action="action_property_compare" sequence="5"/>-->
+    </data>
+</odoo>

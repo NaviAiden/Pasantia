@@ -1,0 +1,10 @@
+<odoo>
+    <record id="property_1" model="realestate.property">
+        <field name="name">House 1</field>
+        <field name="description">A beautiful house.</field>
+        <field name="address">123 Main Street</field>
+        <field name="price">100000</field>
+        <field name="property_type">house</field>
+        <field name="state">available</field>
+    </record>
+</odoo>
